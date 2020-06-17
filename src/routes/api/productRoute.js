@@ -7,14 +7,15 @@ import inputError from '../../middlewares/inputError'
 const productRoute = express.Router();
 
 
-productRoute.post(
+productRoute.get(
   '/',
   ProductController.getAllProducts
 );
 
-productRoute.post(
+productRoute.get(
   '/:id',
   Validator.productRules(),
+  inputError,
   ProductController.getProduct
 );
 
