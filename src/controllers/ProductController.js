@@ -1,5 +1,6 @@
 import HttpStatus from 'http-status-codes';
 import { products } from '../constants/products';
+import Response from '../helpers/Response'
 
 class ProductController {
   static async getAllProducts(req, res) {
