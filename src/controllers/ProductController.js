@@ -4,14 +4,20 @@ import Response from '../helpers/Response';
 
 class ProductController {
   static async getAllProducts(req, res) {
+    const sortedProducts = products.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+    const items = sortedProducts.slice(0, 10)
     try {
       return Response.successMessage(
         res,
         `All products retrieved successfully`,
-        products,
+        items,
         HttpStatus.OK
       );
     } catch (err) {
+      console.log(err);
+
       return Response.errorMessage(
         res,
         'Something went wrong. Please try again!',
@@ -34,7 +40,7 @@ class ProductController {
         );
       }
       return Response.successMessage(
-        products,
+        res,
         'Product retrieved successfully',
         product,
         HttpStatus.OK
