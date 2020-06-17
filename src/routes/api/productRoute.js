@@ -18,6 +18,12 @@ productRoute.get(
   inputError,
   ProductController.getProduct
 );
+productRoute.post(
+  '/add',
+  Validator.newProductRules(),
+  inputError,
+  ProductController.createProduct
+);
 
 
 export default productRoute;
