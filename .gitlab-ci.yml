@@ -1,0 +1,7 @@
+heroku:
+ stage: deploy
+ only:
+ - develop
+ script:
+ - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/product-viewer-server.git
+ - git push -f heroku develop
