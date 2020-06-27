@@ -3,5 +3,5 @@ heroku:
  only:
  - develop
  script:
- - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/product-viewer-server.git
+ - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/simple-products-viewer.git
  - git push -f heroku develop
