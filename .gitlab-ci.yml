@@ -1,3 +1,9 @@
+heroku:
+ stage: deploy
+ only:
+ - develop
+ script:
+ - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/product-viewer-server.git
 image: node:latest
 
 before_script:
@@ -14,5 +20,7 @@ staging:
     image: ruby:latest
     script:
          - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_STAGING
+         - git push -f heroku ch/fix-deployment
     only:
         - ch/fix-deployment
+
