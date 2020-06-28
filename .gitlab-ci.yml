@@ -1,7 +1,18 @@
-heroku:
- stage: deploy
- only:
- - master
- script:
- - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/simple-products-viewer.git
- - git push -f heroku master
+image: node:latest
+
+before_script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+
+stages:
+    - staging
+
+staging:
+    type: deploy
+    stage: staging
+    image: ruby:latest
+    script:
+        - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+    only:
+        - ch/fix-deployment
