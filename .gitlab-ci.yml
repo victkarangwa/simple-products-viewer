@@ -14,6 +14,6 @@ staging:
     image: ruby:latest
     script:
          - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_STAGING
-         - git push -f heroku ch/fix-deployment
+         - git push -f heroku master
     only:
-        - ch/fix-deployment
+        - master
